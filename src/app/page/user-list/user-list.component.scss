@@ -1,0 +1,29 @@
+th {
+  cursor: pointer;
+}
+
+th:hover {
+  color: #2c2c2c;
+}
+
+th {
+  transition: linear 800ms;
+}
+
+.form-control {
+  transition: linear 800ms;
+}
+.form-control:hover {
+  border-color: #464747;
+}
+.form-control:focus {
+  border-color: #e7e7e7;
+}
+
+
+i.arrow {
+  position: absolute;
+  margin-left: 0.5rem;
+  margin-top: 0.25rem;
+
+}

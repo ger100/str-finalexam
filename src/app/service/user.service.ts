@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../model/user';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +37,14 @@ export class UserService {
    * The method is: this.http.delete
    */
 
+  remove(user: User): void {
+    this.http.delete<User>(
+      `${this.endpoint}/${user.id}`
+    ).subscribe(
+      () => this.getAll()
+    );
+  }
+
 
 
   /**
@@ -43,11 +52,26 @@ export class UserService {
    * The method is: this.http.post
    */
 
+  create(user: User): void {
+    this.http.post<User>(
+      `${this.endpoint}`,
+      user
+    )
+  }
 
 
   /**
    * Update a user in the database.
    * The method is: this.http.patch
    */
+
+  update(user: User): Observable<User> {
+    return this.http.patch<User>(
+      `${this.endpoint}/${user.id}`,
+      user
+    )
+  }
+
+
 
 }
